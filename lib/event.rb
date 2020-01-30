@@ -24,20 +24,12 @@ class Event
   end
 
   def standard_deviation_age
-
-    @ages.each_with_index do |age, index|
-      @ages[index] = age.to_f
-    end
-
-    # Sum all the integers -
     sum = 0.0
     @ages.each do |age|
-      sum += age
+      sum += age.to_f
     end
 
-    num_integers = @ages.length
-
-    mean = sum/num_integers
+    mean = sum / @ages.length
 
     modified_sum = 0.0
     @ages.each do |age|
