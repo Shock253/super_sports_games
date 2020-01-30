@@ -8,11 +8,14 @@ class EventTest < Minitest::Test
 
     assert_instance_of Event, event
   end
+
+  def test_can_access_name
+    event = Event.new("Curling", [24, 30, 18, 20, 41])
+
+    assert_equal "Curling", event.name
+  end
 end
 
-# pry(main)> event = Event.new("Curling", [24, 30, 18, 20, 41])
-# #=> #<Event:0x00007fba3fc42ab0 @ages=[24, 30, 18, 20, 41], @name="Curling">
-#
 # pry(main)> event.name
 # #=> "Curling"
 #
