@@ -25,21 +25,6 @@ class Event
 
   def standard_deviation_age
 
-
-    def sqrt(x)
-      # binding.pry
-      average        = lambda { |a,b| (a + b)/2.0 }
-      is_good_enough = lambda { |a| (square(a) - x).abs < 0.001 }
-      improve        = lambda { |a| average[a, x/a] }
-      sqrt_iter      = lambda { |a| is_good_enough[a] ? a : sqrt_iter[improve[a]] }
-
-      sqrt_iter[1.0]
-    end
-
-    def square(value)
-      value * value
-    end
-
     @ages.each_with_index do |age, index|
       @ages[index] = age.to_f
     end
@@ -56,9 +41,9 @@ class Event
 
     modified_sum = 0.0
     @ages.each do |age|
-      modified_sum += square(age - mean)
+      modified_sum += (age - mean) ** 2
     end
 
-    sqrt(modified_sum / num_integers).round(2)
+    Math.sqrt(modified_sum / num_integers).round(2)
   end
 end
