@@ -12,4 +12,12 @@ class Event
   def min_age
     @ages.min
   end
+
+  def average_age
+    sum = 0.0
+    @ages.each do |age|
+      sum += age
+    end
+    sum / @ages.length
+  end
 end
