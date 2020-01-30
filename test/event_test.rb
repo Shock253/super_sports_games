@@ -14,11 +14,15 @@ class EventTest < Minitest::Test
 
     assert_equal "Curling", event.name
   end
+
+  def test_can_access_ages
+    event = Event.new("Curling", [24, 30, 18, 20, 41])
+
+    assert_equal [24, 30, 18, 20, 41], event.ages
+
+  end
 end
 
-# pry(main)> event.name
-# #=> "Curling"
-#
 # pry(main)> event.ages
 # #=> [24, 30, 18, 20, 41]
 #
