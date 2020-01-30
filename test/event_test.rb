@@ -46,8 +46,3 @@ class EventTest < Minitest::Test
     assert_equal 8.28, event.standard_deviation_age
   end
 end
-
-
-# pry(main)> event.standard_deviation_age
-# #=> 8.28
-#
