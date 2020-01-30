@@ -4,4 +4,10 @@ class Event
     @name = name
     @ages = ages
   end
+
+  def max_age
+    @ages.max
+  end
+
+
 end
