@@ -5,16 +5,16 @@ require "pry"
 # When you find the standard deviation, print it out
 def sqrt(x)
   # binding.pry
-  average        = lambda { |a,b| (a + b)/2.0 }
-  is_good_enough = lambda { |a| (square(a) - x).abs < 0.001 }
-  improve        = lambda { |a| average[a, x/a] }
-  sqrt_iter      = lambda { |a| is_good_enough[a] ? a : sqrt_iter[improve[a]] }
+  average        = lambda { |first, second| (first + second)/2.0 }
+  is_good_enough = lambda { |current_sqrt| (square(current_sqrt) - x).abs < 0.001 }
+  improve        = lambda { |current_sqrt| average[current_sqrt, x/current_sqrt] }
+  sqrt_iter      = lambda { |current_sqrt| is_good_enough[current_sqrt] ? current_sqrt : sqrt_iter[improve[current_sqrt]] }
 
   sqrt_iter[1.0]
 end
 
-def square(x)
-  x * x
+def square(value)
+  value * value
 end
 
 # Input -
@@ -43,7 +43,7 @@ mean = sum/num_integers
 # subtract each integer by the average found in step 3
 modified_sum = 0.0
 ages.each do |age|
-  modified_sum += square(age - mean)
+  modified_sum += (age - mean) ** 2
 end
 # binding.pry
 
